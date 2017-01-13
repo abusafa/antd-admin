@@ -34,29 +34,29 @@ const login = ({
             rules: [
               {
                 required: true,
-                message: '请填写用户名'
+                message: 'Please enter your username'
               }
             ]
-          })(<Input size='large' onPressEnter={handleOk} placeholder='用户名' />)}
+          })(<Input size='large' onPressEnter={handleOk} placeholder='username' />)}
         </FormItem>
         <FormItem hasFeedback>
           {getFieldDecorator('password', {
             rules: [
               {
                 required: true,
-                message: '请填写密码'
+                message: 'password incorrect'
               }
             ]
-          })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='密码' />)}
+          })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='Password' />)}
         </FormItem>
         <Row>
           <Button type='primary' size='large' onClick={handleOk} loading={loginButtonLoading}>
-            登录
+            Login
           </Button>
         </Row>
         <p>
-          <span>账号：guest</span>
-          <span>密码：guest</span>
+          <span>Account：guest</span>
+          <span>Password：guest</span>
         </p>
       </form>
     </div>

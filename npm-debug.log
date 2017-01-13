@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin/node',
+1 verbose cli   '/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'dev' ]
+2 info using npm@3.9.3
+3 info using node@v6.2.1
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle @~predev: @
+6 silly lifecycle @~predev: no script for predev, continuing
+7 info lifecycle @~dev: @
+8 verbose lifecycle @~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle @~dev: PATH: /Users/ihababusafa/.nvm/versions/node/v6.2.1/lib/node_modules/npm/bin/node-gyp-bin:/Users/ihababusafa/projects/ncsi-admin/node_modules/.bin:/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin:/Users/ihababusafa/.dnx/runtimes/dnx-mono.1.0.0-rc2-20221/bin:/Users/ihababusafa/.dnx/bin:/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin:/Library/Frameworks/GDAL.framework/Programs:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Genymotion Shell.app/Contents/MacOS/:/Applications/Genymotion.app/Contents/MacOS/:/Applications/Postgres.app/Contents/Versions/9.4/bin
+10 verbose lifecycle @~dev: CWD: /Users/ihababusafa/projects/ncsi-admin
+11 silly lifecycle @~dev: Args: [ '-c', 'dora --plugins "webpack,webpack-hmr"' ]
+12 info lifecycle @~dev: Failed to exec dev script
+13 verbose stack Error: @ dev: `dora --plugins "webpack,webpack-hmr"`
+13 verbose stack spawn ENOENT
+13 verbose stack     at ChildProcess.<anonymous> (/Users/ihababusafa/.nvm/versions/node/v6.2.1/lib/node_modules/npm/lib/utils/spawn.js:17:16)
+13 verbose stack     at emitTwo (events.js:106:13)
+13 verbose stack     at ChildProcess.emit (events.js:191:7)
+13 verbose stack     at maybeClose (internal/child_process.js:852:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+14 verbose pkgid @
+15 verbose cwd /Users/ihababusafa/projects/ncsi-admin
+16 error Darwin 16.3.0
+17 error argv "/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin/node" "/Users/ihababusafa/.nvm/versions/node/v6.2.1/bin/npm" "run" "dev"
+18 error node v6.2.1
+19 error npm  v3.9.3
+20 error file sh
+21 error code ELIFECYCLE
+22 error errno ENOENT
+23 error syscall spawn
+24 error @ dev: `dora --plugins "webpack,webpack-hmr"`
+24 error spawn ENOENT
+25 error Failed at the @ dev script 'dora --plugins "webpack,webpack-hmr"'.
+25 error Make sure you have the latest version of node.js and npm installed.
+25 error If you do, this is most likely a problem with the  package,
+25 error not with npm itself.
+25 error Tell the author that this fails on your system:
+25 error     dora --plugins "webpack,webpack-hmr"
+25 error You can get information on how to open an issue for this project with:
+25 error     npm bugs
+25 error Or if that isn't available, you can get their info via:
+25 error     npm owner ls
+25 error There is likely additional logging output above.
+26 verbose exit [ 1, true ]

@@ -1,8 +1,8 @@
 module.exports = {
   name: 'Ant Design Admin',
   prefix: 'antdAdmin',
-  footerText: 'Ant Design Admin 版权所有 © 2016 由 zuiidea 支持',
+  footerText: '© جميع الحقوق محفوظة للمركز الوطني للإحصاء والمعلومات. (2016)، سلطنة عمان',
   logoSrc: 'https://t.alipayobjects.com/images/rmsweb/T1B9hfXcdvXXXXXXXX.svg',
-  logoText: 'Antd Admin',
+  logoText: 'NCSI DASHBOARD',
   needLogin: true
 }
