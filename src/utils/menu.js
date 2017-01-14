@@ -1,23 +1,39 @@
 module.exports = [
   {
     key: 'dashboard',
-    name: '仪表盘',
+    name: 'Dashboard',
     icon: 'laptop'
   },
   {
     key: 'users',
-    name: '用户管理',
+    name: 'Users',
     icon: 'user'
   },
   {
-    key: 'ui',
-    name: 'UI组件',
+    key: 'ui1',
+    name: 'UI components',
     icon: 'camera-o',
     clickable: false,
     child: [
       {
         key: 'ico',
-        name: 'Ico 图标'
+        name: 'Ico Icon'
+      },
+      {
+        key: 'search',
+        name: 'Search 搜索'
+      }
+    ]
+  },
+  {
+    key: 'ui',
+    name: 'UI components',
+    icon: 'camera-o',
+    clickable: false,
+    child: [
+      {
+        key: 'ico',
+        name: 'Ico Icon'
       },
       {
         key: 'search',
@@ -27,24 +43,24 @@ module.exports = [
   },
   {
     key: 'navigation',
-    name: '测试导航',
+    name: 'Navigation',
     icon: 'setting',
     child: [
       {
         key: 'navigation1',
-        name: '二级导航1'
+        name: 'navigation1'
       },
       {
         key: 'navigation2',
-        name: '二级导航2',
+        name: 'navigation2',
         child: [
           {
             key: 'navigation21',
-            name: '三级导航1'
+            name: 'navigation21'
           },
           {
             key: 'navigation22',
-            name: '三级导航2'
+            name: 'navigation22'
           }
         ]
       }

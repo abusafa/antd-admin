@@ -173,6 +173,9 @@ export default {
       icon: 'http://www.zuimeitianqi.com/res/icon/0_big.png',
       dateTime: new Date().format('MM-dd hh:mm')
     },
+    exports: [],
+    imports: [],
+    outlets:[],
     sales: [],
     quote: {
       avatar: 'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236'

@@ -1,4 +1,7 @@
 const webpack = require('atool-build/lib/webpack')
+var CompressionPlugin = require("compression-webpack-plugin");
+
+const {resolve} = require('path');
 
 module.exports = function (webpackConfig, env) {
   webpackConfig.babel.plugins.push('transform-runtime')
@@ -44,6 +47,15 @@ module.exports = function (webpackConfig, env) {
       loader.test = /\.css$/
     }
   })
+
+  webpackConfig.resolve =  {
+    alias: {
+
+      'mapbox-gl$': resolve('./node_modules/mapbox-gl/dist/mapbox-gl.js')
+    }
+  }
+
+  webpackConfig.plugins.push(new webpack.EnvironmentPlugin(['MAPBOX_ACCESS_TOKEN', 'MapboxAccessToken']))
 
   return webpackConfig
 }

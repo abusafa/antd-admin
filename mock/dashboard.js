@@ -2,7 +2,13 @@ import {color} from '../src/utils/theme'
 const Mock = require('mockjs')
 import mockStorge from '../src/utils/mockStorge'
 
+import Outlets from './oman/outlets.json';
+import OutletsDB from './oman/db.json';
+
+
 let dataKey = mockStorge('Dashboard', Mock.mock({
+  'db': OutletsDB,
+  'outlets': Outlets,
   'sales|8': [
     {
       'name|+1': 2008,
@@ -124,6 +130,8 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
 
 module.exports = {
   'GET /api/dashboard' (req, res) {
+    console.log('global[dataKey]',global[dataKey]);
+
     res.json(global[dataKey])
   }
 }

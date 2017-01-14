@@ -4,6 +4,7 @@ import {Row, Col, Card} from 'antd'
 import NumberCard from '../components/dashboard/numberCard'
 import Quote from '../components/dashboard/quote'
 import Sales from '../components/dashboard/sales'
+import OutletsExportImportChart from '../components/dashboard/outlets-export-import-chart'
 import Weather from '../components/dashboard/weather'
 import RecentSales from '../components/dashboard/recentSales'
 import Comments from '../components/dashboard/comments'
@@ -14,6 +15,10 @@ import User from '../components/dashboard/user'
 import styles from './dashboard.less'
 import {color} from '../utils'
 
+import geojson from "./geojson.json";
+import MapExample from '../components/dashboard/map-example'
+
+import om from '../flags/4x3/om.svg';
 const bodyStyle = {
   bodyStyle: {
     height: 432,
@@ -21,8 +26,15 @@ const bodyStyle = {
   }
 }
 
+
+const accessToken = 'pk.eyJ1IjoiaWhhYiIsImEiOiJZT19QbkJJIn0.ROWLhlTd-2mI94QvdzrH8g';
+const center = [ -77.01239, 38.91275 ]
+
+
 function Dashboard ({dashboard, dispatch}) {
-  const {weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
+  const {db, outlets, weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
+  console.log("outlets", outlets);
+
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
   </Col>)
@@ -31,11 +43,38 @@ function Dashboard ({dashboard, dispatch}) {
     <Row gutter={24}>
       {numberCards}
       <Col lg={18} md={24}>
+
+        {/* <img src={om} style={{width:100}}/> */}
+
+
+        {/*
         <Card bordered={false} bodyStyle={{
           padding: '24px 36px 24px 0'
         }}>
           <Sales data={sales} />
         </Card>
+        */}
+
+        <Card bordered={false} bodyStyle={{
+          padding: '24px 36px 24px 0'
+        }}>
+          <OutletsExportImportChart
+            data={db}
+            select={[{name:"ميناء صلالة التجاري", id:4},{name:"ميناء السلطان قابوس", id:6}, {name:"مركز شرطة الوجاجة", id:13}]}
+            inOut="out"
+            title='الصادرات'
+          />
+        </Card>
+
+
+        <Card bordered={false} bodyStyle={{
+
+        }}>
+          <MapExample />
+
+        </Card>
+
+
       </Col>
       <Col lg={6} md={24}>
         <Row gutter={24}>
@@ -98,6 +137,7 @@ function Dashboard ({dashboard, dispatch}) {
 Dashboard.propTypes = {
   weather: PropTypes.object,
   sales: PropTypes.array,
+  outlets: PropTypes.array,
   quote: PropTypes.object,
   numbers: PropTypes.array,
   recentSales: PropTypes.array,

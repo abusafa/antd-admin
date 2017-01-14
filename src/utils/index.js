@@ -12,6 +12,11 @@ String.prototype.hyphenToHump = function () {
   })
 }
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+}
+
 // 驼峰转连字符
 String.prototype.humpToHyphen = function () {
   return this.replace(/([A-Z])/g, '-$1').toLowerCase()

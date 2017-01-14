@@ -47,7 +47,7 @@ function Bread ({ location }) {
     <div className={styles.bread}>
       <Breadcrumb>
         <Breadcrumb.Item href='#/'><Icon type='home' />
-          <span>主页</span>
+          <span>Home</span>
         </Breadcrumb.Item>
         {breads}
       </Breadcrumb>
