@@ -73,6 +73,28 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
       'Cards Complete|200-1000': 1
     }
   ],
+  'countries':[
+    {
+      flag: 'sa',
+      name: 'السعودية'
+    },
+    {
+      flag: 'om',
+      name: 'عمان'
+    },
+    {
+      flag: 'jo',
+      name: 'الأردن'
+    },
+    {
+      flag: 'ps',
+      name: 'فلسطين'
+    },
+    {
+      flag: 'kw',
+      name: 'الكويت'
+    }
+  ],
   'comments|5': [
     {
       name: '@last',

@@ -4,10 +4,16 @@ import {Row, Col, Card} from 'antd'
 import NumberCard from '../components/dashboard/numberCard'
 import Quote from '../components/dashboard/quote'
 import Sales from '../components/dashboard/sales'
-import OutletsExportImportChart from '../components/dashboard/outlets-export-import-chart'
+import OutletsExportImportChartByOutlet from '../components/dashboard/outlets-export-import-chart-by-outlet'
+import OutletsExportImportChartByOutletType from '../components/dashboard/outlets-export-import-chart-by-outlet-type'
+import GoodsExportImportChartByGoodsType from '../components/dashboard/goods-export-import-chart-by-goods-type'
+import PieChartByOutletType from '../components/dashboard/pie-chart-by-outlet-type'
+
 import Weather from '../components/dashboard/weather'
 import RecentSales from '../components/dashboard/recentSales'
 import Comments from '../components/dashboard/comments'
+import Countries from '../components/dashboard/countries'
+
 import Completed from '../components/dashboard/completed'
 import Browser from '../components/dashboard/browser'
 import Cpu from '../components/dashboard/cpu'
@@ -32,7 +38,7 @@ const center = [ -77.01239, 38.91275 ]
 
 
 function Dashboard ({dashboard, dispatch}) {
-  const {db, outlets, weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
+  const {db, outlets, countries=[], weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
   console.log("outlets", outlets);
 
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
@@ -41,6 +47,21 @@ function Dashboard ({dashboard, dispatch}) {
 
   return (
     <Row gutter={24}>
+
+
+      <Col lg={12} md={24}>
+        <Card bordered={false} {...bodyStyle}>
+          <RecentSales data={recentSales} />
+        </Card>
+      </Col>
+      <Col lg={12} md={24}>
+
+
+        <Card bordered={false} {...bodyStyle}>
+          <Countries data={countries} />
+        </Card>
+      </Col>
+
       {numberCards}
       <Col lg={18} md={24}>
 
@@ -58,11 +79,39 @@ function Dashboard ({dashboard, dispatch}) {
         <Card bordered={false} bodyStyle={{
           padding: '24px 36px 24px 0'
         }}>
-          <OutletsExportImportChart
+          <PieChartByOutletType
+            data={db}
+            title='بحسب المنفذ'
+          />
+        </Card>
+
+        <Card bordered={false} bodyStyle={{
+          padding: '24px 36px 24px 0'
+        }}>
+          <GoodsExportImportChartByGoodsType
+            data={db}
+            select={[{name:'ورق',id:48}, {name:'قطن',id:52}, {name:'سجاد',id:57}]}
+            title='بحسب نوع البضاعة'
+          />
+        </Card>
+
+
+        <Card bordered={false} bodyStyle={{
+          padding: '24px 36px 24px 0'
+        }}>
+          <OutletsExportImportChartByOutlet
             data={db}
             select={[{name:"ميناء صلالة التجاري", id:4},{name:"ميناء السلطان قابوس", id:6}, {name:"مركز شرطة الوجاجة", id:13}]}
-            inOut="out"
-            title='الصادرات'
+            title='بحسب المنفذ'
+          />
+        </Card>
+
+        <Card bordered={false} bodyStyle={{
+          padding: '24px 36px 24px 0'
+        }}>
+          <OutletsExportImportChartByOutletType
+            data={db}
+            title='بحسب نوع المنفذ'
           />
         </Card>
 
@@ -107,6 +156,8 @@ function Dashboard ({dashboard, dispatch}) {
         <Card bordered={false} {...bodyStyle}>
           <Comments data={comments} />
         </Card>
+
+
       </Col>
       <Col lg={24} md={24}>
         <Card bordered={false} bodyStyle={{
