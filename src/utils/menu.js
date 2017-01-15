@@ -10,18 +10,56 @@ module.exports = [
     icon: 'user'
   },
   {
-    key: 'ui1',
-    name: 'UI components',
-    icon: 'camera-o',
+    key: 'seaport',
+    name: 'بحري',
+    icon: 'dot-chart',
     clickable: false,
     child: [
       {
-        key: 'ico',
-        name: 'Ico Icon'
+        icon: 'star-o',
+        key: 'id_4',
+        name: "ميناء صلالة التجاري"
       },
       {
-        key: 'search',
-        name: 'Search 搜索'
+        icon: 'star-o',
+        key: 'id_6',
+        name: "ميناء السلطان قابوس"
+      }
+    ]
+  },
+  {
+    key: 'airport',
+    name: 'جوي',
+    icon: 'bar-chart',
+    clickable: false,
+    child: [
+      {
+        icon: 'star-o',
+        key: 'id_16',
+        name: "مطار مسقط الدولي"
+      },
+      {
+        icon: 'star-o',
+        key: 'id_21',
+        name: "مطار صلالة"
+      }
+    ]
+  },
+  {
+    key: 'borderport',
+    name: 'بري',
+    icon: 'pie-chart',
+    clickable: false,
+    child: [
+      {
+        icon: 'star-o',
+        key: 'id_11',
+        name: "مركز شرطة البريمي"
+      },
+      {
+        icon: 'star-o',
+        key: 'id_13',
+        name: "مركز شرطة الوجاجة"
       }
     ]
   },
