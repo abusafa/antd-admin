@@ -37,7 +37,7 @@ class PieChartByOutletType extends Component {
     const { data , title} = this.props
     const {inOut, checked, year} = this.state
 
-    let years = [2010,2011,2012,2013,2014,2015,2016];
+    let years = [2010,2011,2012,2013,2014,2015];
     let result = [
       {
         name: 'بري',
@@ -58,7 +58,7 @@ class PieChartByOutletType extends Component {
     return (
       <div className={styles.sales}>
         <div className={styles.title}>{title}</div>
-        <div style={{position: 'absolute',right: 15,top: 22, zIndex:1000}} >
+        <div style={{position: 'absolute',left: 15,top: 22, zIndex:1000}} >
           <Switch onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
           <Select defaultValue="2010" style={{ width: 120, margin:8 }} onChange={(value)=>this.handleYearChange(value)}>
               {years.map((value, key)=> <Option key={key} value={`${value}`}>{value}</Option> )}

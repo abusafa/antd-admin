@@ -1,12 +1,12 @@
 module.exports = [
   {
     key: 'dashboard',
-    name: 'Dashboard',
+    name: 'الرئيسية',
     icon: 'laptop'
   },
   {
     key: 'users',
-    name: 'Users',
+    name: 'المستخدمون',
     icon: 'user'
   },
   {

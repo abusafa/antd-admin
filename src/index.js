@@ -1,6 +1,6 @@
 import './index.html'
 import dva from 'dva'
-
+import '../node_modules/antd/dist/rtl.antd.css'
 // 1. Initialize
 const app = dva()
 

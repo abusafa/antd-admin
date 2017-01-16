@@ -33,7 +33,7 @@ class OutletsExportImportChartByOutlet extends Component {
     const {inOut, checked} = this.state
 
 
-    let years = [2010,2011,2012,2013,2014,2015,2016];
+    let years = [2010,2011,2012,2013,2014,2015];
     let chartData = years.map((year)=>{
       let result = {
         [select[0].name]: sumBy(filter(data, (o)=> o.outlet_id === select[0].id && o.in_out === inOut && o.year === year ), (o)=> o.value),
@@ -47,7 +47,7 @@ class OutletsExportImportChartByOutlet extends Component {
 
     return (
       <div className={styles.sales}>
-        <Switch style={{float: 'right'}} onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
+        <Switch style={{float: 'left'}} onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
 
         <div className={styles.title}>{title}</div>
         <ResponsiveContainer minHeight={360}>

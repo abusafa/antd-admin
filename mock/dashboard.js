@@ -153,7 +153,7 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
 module.exports = {
   'GET /api/dashboard' (req, res) {
     console.log('global[dataKey]',global[dataKey]);
-
+    console.log(dataKey);
     res.json(global[dataKey])
   }
 }
