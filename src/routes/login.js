@@ -26,7 +26,7 @@ const login = ({
     <div className={styles.form}>
       <div className={styles.logo}>
         <img src={config.logoSrc} />
-        <span>Ant Design</span>
+        <span>المركزالوطني للإحصاء</span>
       </div>
       <form>
         <FormItem hasFeedback>
@@ -37,7 +37,7 @@ const login = ({
                 message: 'Please enter your username'
               }
             ]
-          })(<Input size='large' onPressEnter={handleOk} placeholder='username' />)}
+          })(<Input size='large' onPressEnter={handleOk} placeholder='اسم المستخدم' />)}
         </FormItem>
         <FormItem hasFeedback>
           {getFieldDecorator('password', {
@@ -47,16 +47,16 @@ const login = ({
                 message: 'password incorrect'
               }
             ]
-          })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='Password' />)}
+          })(<Input size='large' type='password' onPressEnter={handleOk} placeholder='كلمة المرور' />)}
         </FormItem>
         <Row>
           <Button type='primary' size='large' onClick={handleOk} loading={loginButtonLoading}>
-            Login
+            تسجيل الدخول
           </Button>
         </Row>
         <p>
-          <span>Account：guest</span>
-          <span>Password：guest</span>
+          <span>المستخدم: زائر</span>
+          <span>كلمة المرور: زائر</span>
         </p>
       </form>
     </div>

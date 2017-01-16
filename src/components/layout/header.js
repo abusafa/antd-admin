@@ -28,11 +28,11 @@ function Header ({user, logout, switchSider, siderFold, isNavbar, menuPopoverVis
 
       <Menu className='header-menu' mode='horizontal' onClick={handleClickMenu}>
         <SubMenu style={{
-          float: 'right'
+          float: 'left'
         }} title={< span > <Icon type='user' />
           {user.name} < /span>}>
           <Menu.Item key='logout'>
-            <a>注销</a>
+            <a>الخروج</a>
           </Menu.Item>
         </SubMenu>
       </Menu>

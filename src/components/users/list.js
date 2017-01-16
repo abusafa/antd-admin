@@ -12,59 +12,59 @@ function list ({
 }) {
   const columns = [
     {
-      title: '头像',
+      title: 'صورة',
       dataIndex: 'avatar',
       key: 'avatar',
       width: 64,
       className: styles.avatar,
       render: (text) => <img width={24} src={text} />
     }, {
-      title: '姓名',
+      title: 'الاسم',
       dataIndex: 'name',
       key: 'name'
     }, {
-      title: '昵称',
+      title: 'الاسم المستعار',
       dataIndex: 'nickName',
       key: 'nickName'
     }, {
-      title: '年龄',
+      title: 'العمر',
       dataIndex: 'age',
       key: 'age',
-      render: (text) => <span>{text}岁</span>
+      render: (text) => <span>{text}سنة</span>
     }, {
-      title: '性别',
+      title: 'الجنس',
       dataIndex: 'isMale',
       key: 'isMale',
       render: (text) => <span>{text
-            ? '男'
-            : '女'}</span>
+            ? 'ذكر'
+            : 'إنثى'}</span>
     }, {
-      title: '电话',
+      title: 'الهاتف',
       dataIndex: 'phone',
       key: 'phone'
     }, {
-      title: '邮箱',
+      title: 'البريد الإلكتروني',
       dataIndex: 'email',
       key: 'email'
     }, {
-      title: '住址',
+      title: 'العنوان',
       dataIndex: 'address',
       key: 'address'
     }, {
-      title: '创建时间',
+      title: 'تاريخ الإضافة',
       dataIndex: 'createTime',
       key: 'createTime'
     }, {
-      title: '操作',
+      title: 'مهام',
       key: 'operation',
       width: 100,
       render: (text, record) => (
         <p>
           <a onClick={() => onEditItem(record)} style={{
-            marginRight: 4
-          }}>编辑</a>
-          <Popconfirm title='确定要删除吗？' onConfirm={() => onDeleteItem(record.id)}>
-            <a>删除</a>
+            marginLeft: 10
+          }}>تعديل</a>
+          <Popconfirm title='هل إنت متأكد؟' onConfirm={() => onDeleteItem(record.id)}>
+            <a>حذف</a>
           </Popconfirm>
         </p>
       )

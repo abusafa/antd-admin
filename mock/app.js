@@ -3,11 +3,11 @@ import mockStorge from '../src/utils/mockStorge'
 
 let dataKey = mockStorge('AdminUsers', [
   {
-    username: 'guest',
-    password: 'guest'
+    username: 'زائر',
+    password: 'زائر'
   },
   {
-    username: '吴彦祖',
+    username: 'دانيال وو',
     password: '123456'
   }
 ])
@@ -28,13 +28,13 @@ module.exports = {
         now.setDate(now.getDate() + 1)
         Cookie.set('user_session', now.getTime())
         Cookie.set('user_name', userItem.username)
-        response.message = '登录成功'
+        response.message = 'عملية تسجيل الدخول ناجحة'
         response.success = true
       } else {
-        response.message = '密码不正确'
+        response.message = 'كلمة المرور غير صحيحة'
       }
     } else {
-      response.message = '用户不存在'
+      response.message = 'المستخدم غير موجود'
     }
     res.json(response)
   },
@@ -53,7 +53,7 @@ module.exports = {
     Cookie.remove('user_name', { path: '' })
     res.json({
       success: true,
-      message: '退出成功'
+      message: 'خروج ناجح'
     })
   }
 }

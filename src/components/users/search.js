@@ -18,7 +18,7 @@ const search = ({
     keyword,
     size: 'large',
     select: true,
-    selectOptions: [{ value: 'name', name: '姓名' }, { value: 'address', name: '地址' }],
+    selectOptions: [{ value: 'name', name: 'الاسم' }, { value: 'address', name: 'العنوان' }],
     selectProps: {
       defaultValue: 'name'
     },
@@ -33,7 +33,7 @@ const search = ({
         <SearchGroup {...searchGroupProps} />
       </Col>
       <Col lg={{offset: 8, span: 8}} md={12} sm={8} xs={24} style={{marginBottom: 16, textAlign: 'right'}}>
-        <Button size='large' type='ghost' onClick={onAdd}>添加</Button>
+        <Button size='large' type='ghost' onClick={onAdd}>إضافة</Button>
       </Col>
     </Row>
   )

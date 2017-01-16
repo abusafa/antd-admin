@@ -36,7 +36,7 @@ const modal = ({
   }
 
   const modalOpts = {
-    title: '修改用户',
+    title: 'تعديل المستخدم',
     visible,
     onOk: handleOk,
     onCancel,
@@ -46,86 +46,86 @@ const modal = ({
   return (
     <Modal {...modalOpts}>
       <Form horizontal>
-        <FormItem label='姓名：' hasFeedback {...formItemLayout}>
+        <FormItem label='الاسم الكامل：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
             initialValue: item.name,
             rules: [
               {
                 required: true,
-                message: '姓名未填写'
+                message: 'الاسم مفقود'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='昵称：' hasFeedback {...formItemLayout}>
+        <FormItem label='اللقب:' hasFeedback {...formItemLayout}>
           {getFieldDecorator('nickName', {
             initialValue: item.nickName,
             rules: [
               {
                 required: true,
-                message: '昵称未填写'
+                message: 'اللقب مفقود'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='性别' hasFeedback {...formItemLayout}>
+        <FormItem label='الجنس' hasFeedback {...formItemLayout}>
           {getFieldDecorator('isMale', {
             initialValue: item.isMale,
             rules: [
               {
                 required: true,
                 type: 'boolean',
-                message: '请选择性别'
+                message: 'يرجى تحديد الجنس'
               }
             ]
           })(
             <Radio.Group>
-              <Radio value>男</Radio>
-              <Radio value={false}>女</Radio>
+              <Radio value>ذكر</Radio>
+              <Radio value={false}>أنثى</Radio>
             </Radio.Group>
           )}
         </FormItem>
-        <FormItem label='年龄：' hasFeedback {...formItemLayout}>
+        <FormItem label='العمر:' hasFeedback {...formItemLayout}>
           {getFieldDecorator('age', {
             initialValue: item.age,
             rules: [
               {
                 required: true,
                 type: 'number',
-                message: '年龄未填写'
+                message: 'العمر مفقود'
               }
             ]
           })(<InputNumber min={18} max={100} />)}
         </FormItem>
-        <FormItem label='电话：' hasFeedback {...formItemLayout}>
+        <FormItem label='الهاتف:' hasFeedback {...formItemLayout}>
           {getFieldDecorator('phone', {
             initialValue: item.phone,
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: 'لا يمكن أن تكون فارغة'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
+        <FormItem label='البريد الإلكتروني:' hasFeedback {...formItemLayout}>
           {getFieldDecorator('email', {
             initialValue: item.email,
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: 'لا يمكن أن تكون فارغة'
               }
             ]
           })(<Input />)}
         </FormItem>
-        <FormItem label='住址：' hasFeedback {...formItemLayout}>
+        <FormItem label='العنوان:' hasFeedback {...formItemLayout}>
           {getFieldDecorator('address', {
             initialValue: item.address,
             rules: [
               {
                 required: true,
-                message: '不能为空'
+                message: 'لا يمكن أن تكون فارغة'
               }
             ]
           })(<Input />)}

@@ -14,7 +14,7 @@ export default {
     pagination: {
       showSizeChanger: true,
       showQuickJumper: true,
-      showTotal: total => `共 ${total} 条`,
+      showTotal: total => `نتائج ${total}`,
       current: 1,
       total: null
     }

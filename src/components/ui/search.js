@@ -45,7 +45,7 @@ class Search extends React.Component {
           {selectOptions && selectOptions.map((item, key) => <Select.Option value={item.value} key={key}>{item.name || item.value}</Select.Option>)}
         </Select>}
         <Input ref='searchInput' size={size} onChange={this.handleInputChange} onPressEnter={this.handleSearch}/>
-        <Button size={size} type='primary' onClick={this.handleSearch}>搜索</Button>
+        <Button size={size} type='primary' onClick={this.handleSearch}>بحث</Button>
         {clearVisible && <Icon type='cross' onClick={this.handleClearInput} />}
       </Input.Group>
     )
