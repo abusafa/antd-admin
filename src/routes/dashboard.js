@@ -66,11 +66,18 @@ function Dashboard ({location, dashboard, dispatch}) {
   return (
     <Row gutter={24}>
 
-
+      {numberCards}
+      
       <Col lg={8} md={24}>
-        <Card bordered={false} {...bodyStyle}>
-          <TopGoodsTable db={filteredDB} portId={6}/>
+        <Card bordered={false} bodyStyle={{
+          padding: '24px 36px 24px 0'
+        }}>
+          <PieChartByOutletType
+            data={filteredDB}
+            title='بحسب المنفذ'
+          />
         </Card>
+
       </Col>
 
       <Col lg={8} md={24}>
@@ -100,7 +107,7 @@ function Dashboard ({location, dashboard, dispatch}) {
         </Card>
       </Col>
 
-      {numberCards}
+
       <Col lg={18} md={24}>
 
         {/* <img src={om} style={{width:100}}/> */}
@@ -114,14 +121,6 @@ function Dashboard ({location, dashboard, dispatch}) {
         </Card>
         */}
 
-        <Card bordered={false} bodyStyle={{
-          padding: '24px 36px 24px 0'
-        }}>
-          <PieChartByOutletType
-            data={filteredDB}
-            title='بحسب المنفذ'
-          />
-        </Card>
 
         <Card bordered={false} bodyStyle={{
           padding: '24px 36px 24px 0'
