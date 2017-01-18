@@ -4,6 +4,7 @@ import L from 'leaflet';
 import {getMarkerSVGIcon} from '../../utils/svg-marker-gen';
 import { color } from '../../utils'
 
+import lodash, {filter, indexOf} from 'lodash'
 
 const markerColors = {
   'بحري': {
@@ -20,12 +21,32 @@ const markerColors = {
 
 export default class MapExample extends Component{
 
+  constructor(props){
+    super();
+    this.state = {
+      features: []
+    }
+  }
+
   componentDidMount(){
 
   }
 
+  componentWillReceiveProps(nextProps){
+
+      console.log('componentWillReceiveProps');
+      setTimeout(() => {
+        this.setState({
+          tm:Date.now(),
+          features:filter(nextProps.features, (o)=> indexOf(nextProps.ids,o.properties.Code)!== -1)
+        })
+      }, 200);
+  }
+
   render(){
-    const {features=[]} = this.props;
+    const {features=[], tm} = this.state;
+
+
     console.log('features',features);
     const position = [21.586312, 57.104954];
 

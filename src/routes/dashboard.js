@@ -22,7 +22,7 @@ import Cpu from '../components/dashboard/cpu'
 import User from '../components/dashboard/user'
 import styles from './dashboard.less'
 import {color} from '../utils'
-
+import lodash, {filter, indexOf} from 'lodash'
 import geojson from "./geojson.json";
 import MapExample from '../components/dashboard/map-example'
 
@@ -38,10 +38,26 @@ const bodyStyle = {
 const accessToken = 'pk.eyJ1IjoiaWhhYiIsImEiOiJZT19QbkJJIn0.ROWLhlTd-2mI94QvdzrH8g';
 const center = [ -77.01239, 38.91275 ]
 
+const outletTypeIds = {
+  'sea':[4,6],
+  'air':[16,21],
+  'land':[11,13]
+}
 
-function Dashboard ({dashboard, dispatch}) {
+function Dashboard ({location, dashboard, dispatch}) {
   const {db, outlets={}, countries=[], weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
-  console.log("outlets", outlets);
+
+  const outletType = location.pathname.substr(1).split('/')[1]
+  let outletIds = outletType ? outletTypeIds[outletType] : [4,6,16,21,11,13]
+  const outletId = location.pathname.substr(1).split('/')[2]
+  outletIds = outletId? outletId.split(',') : [4,6,16,21,11,13]
+  outletIds = outletIds.map((item)=> parseInt(item))
+
+  let filteredDB = filter(db, (o)=> indexOf(outletIds,o.outlet_id)!== -1)
+  console.log('outletIds', outletIds);
+  window.DB = db
+  window.filteredDB = filteredDB
+  window.lodash = lodash
 
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
     <NumberCard {...item} />
@@ -53,20 +69,20 @@ function Dashboard ({dashboard, dispatch}) {
 
       <Col lg={8} md={24}>
         <Card bordered={false} {...bodyStyle}>
-          <TopGoodsTable db={db} portId={6}/>
+          <TopGoodsTable db={filteredDB} portId={6}/>
         </Card>
       </Col>
 
       <Col lg={8} md={24}>
         <Card bordered={false} {...bodyStyle}>
-          <TopGoodsTable db={db} />
+          <TopGoodsTable db={filteredDB} />
         </Card>
       </Col>
 
       <Col lg={8} md={24}>
         <Card bordered={false} bodyStyle={{
         }}>
-          <MapExample features={outlets.features} />
+          <MapExample features={outlets.features}  ids={outletIds} />
         </Card>
       </Col>
 
@@ -102,7 +118,7 @@ function Dashboard ({dashboard, dispatch}) {
           padding: '24px 36px 24px 0'
         }}>
           <PieChartByOutletType
-            data={db}
+            data={filteredDB}
             title='بحسب المنفذ'
           />
         </Card>
@@ -111,7 +127,7 @@ function Dashboard ({dashboard, dispatch}) {
           padding: '24px 36px 24px 0'
         }}>
           <GoodsExportImportChartByGoodsType
-            data={db}
+            data={filteredDB}
             select={[{name:'ورق',id:48}, {name:'قطن',id:52}, {name:'سجاد',id:57}]}
             title='بحسب نوع البضاعة'
           />
@@ -122,7 +138,7 @@ function Dashboard ({dashboard, dispatch}) {
           padding: '24px 36px 24px 0'
         }}>
           <OutletsExportImportChartByOutlet
-            data={db}
+            data={filteredDB}
             select={[{name:"ميناء صلالة التجاري", id:4},{name:"ميناء السلطان قابوس", id:6}, {name:"مركز شرطة الوجاجة", id:13}]}
             title='بحسب المنفذ'
           />
@@ -132,7 +148,7 @@ function Dashboard ({dashboard, dispatch}) {
           padding: '24px 36px 24px 0'
         }}>
           <OutletsExportImportChartByOutletType
-            data={db}
+            data={filteredDB}
             title='بحسب نوع المنفذ'
           />
         </Card>

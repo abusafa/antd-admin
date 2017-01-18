@@ -22,7 +22,19 @@ export default function ({history, app}) {
               app.model(require('./models/dashboard'))
               cb(null, require('./routes/dashboard'))
             })
-          }
+          },
+          childRoutes:[
+            {
+              path: ':type/:id',
+              name: 'dashboard_see',
+              getComponent (nextState, cb) {
+                require.ensure([], require => {
+                  app.model(require('./models/dashboard'))
+                  cb(null, require('./routes/dashboard'))
+                })
+              }
+            }
+          ]
         }, {
           path: 'users',
           name: 'users',
