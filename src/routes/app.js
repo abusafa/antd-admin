@@ -63,7 +63,7 @@ function App ({children, location, dispatch, app}) {
             <Footer />
           </div>
         </div>
-        : <div className={styles.spin}><Spin tip='加载用户信息...' spinning={loading} size='large'><Login {...loginProps} /></Spin></div>}</div>
+        : <div className={styles.spin}><Spin tip='جار التحميل  ٫٫٫' spinning={loading} size='large'><Login {...loginProps} /></Spin></div>}</div>
   )
 }
 

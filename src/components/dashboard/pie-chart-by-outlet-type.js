@@ -27,9 +27,6 @@ class PieChartByOutletType extends Component {
       checked: checked,
       inOut: checked? 'out': 'in',
     });
-
-
-
   }
 
 

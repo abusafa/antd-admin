@@ -16,6 +16,8 @@ import Countries from '../components/dashboard/countries'
 
 import Completed from '../components/dashboard/completed'
 import Browser from '../components/dashboard/browser'
+import TopGoodsTable from '../components/dashboard/top-goods-table'
+
 import Cpu from '../components/dashboard/cpu'
 import User from '../components/dashboard/user'
 import styles from './dashboard.less'
@@ -38,7 +40,7 @@ const center = [ -77.01239, 38.91275 ]
 
 
 function Dashboard ({dashboard, dispatch}) {
-  const {db, outlets, countries=[], weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
+  const {db, outlets={}, countries=[], weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
   console.log("outlets", outlets);
 
   const numberCards = numbers.map((item, key) => <Col key={key} lg={6} md={12}>
@@ -47,6 +49,26 @@ function Dashboard ({dashboard, dispatch}) {
 
   return (
     <Row gutter={24}>
+
+
+      <Col lg={8} md={24}>
+        <Card bordered={false} {...bodyStyle}>
+          <TopGoodsTable db={db} portId={6}/>
+        </Card>
+      </Col>
+
+      <Col lg={8} md={24}>
+        <Card bordered={false} {...bodyStyle}>
+          <TopGoodsTable db={db} />
+        </Card>
+      </Col>
+
+      <Col lg={8} md={24}>
+        <Card bordered={false} bodyStyle={{
+        }}>
+          <MapExample features={outlets.features} />
+        </Card>
+      </Col>
 
 
       <Col lg={12} md={24}>
@@ -115,13 +137,6 @@ function Dashboard ({dashboard, dispatch}) {
           />
         </Card>
 
-
-        <Card bordered={false} bodyStyle={{
-
-        }}>
-          <MapExample />
-
-        </Card>
 
 
       </Col>
