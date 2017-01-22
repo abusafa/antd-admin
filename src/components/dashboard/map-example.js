@@ -33,8 +33,6 @@ export default class MapExample extends Component{
   }
 
   componentWillReceiveProps(nextProps){
-
-      console.log('componentWillReceiveProps');
       setTimeout(() => {
         this.setState({
           tm:Date.now(),
@@ -45,9 +43,6 @@ export default class MapExample extends Component{
 
   render(){
     const {features=[], tm} = this.state;
-
-
-    console.log('features',features);
     const position = [21.586312, 57.104954];
 
     return(

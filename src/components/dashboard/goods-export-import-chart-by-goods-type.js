@@ -11,16 +11,15 @@ class GoodsExportImportChartByGoodsType extends Component {
   constructor(props){
     super();
     this.state={
-      inOut: 'in',
-      checked: true,
+      inOut: 'out',
+      checked: false,
     }
   }
 
   changeExportEmport(checked){
-    console.log("checked", checked);
     this.setState({
       checked: checked,
-      inOut: checked? 'out': 'in',
+      inOut: checked? 'in': 'out',
     });
 
 
@@ -47,9 +46,21 @@ class GoodsExportImportChartByGoodsType extends Component {
 
     return (
       <div className={styles.sales}>
-        <Switch style={{float: 'left'}} onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
 
-        <div className={styles.title}>{title}</div>
+        <table style={{width:'100%'}}>
+          <tbody>
+          <tr>
+            <td>
+              <div className={styles.title}>{title}</div>
+            </td>
+            <td style={{textAlign:'left', paddingLeft:20}}>
+              <Switch onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
+
+            </td>
+          </tr>
+        </tbody>
+        </table>
+
         <ResponsiveContainer minHeight={360}>
           <LineChart data={chartData}>
             <Legend verticalAlign='top'

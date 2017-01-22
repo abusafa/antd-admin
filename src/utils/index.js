@@ -2,7 +2,7 @@ import config from './config'
 import menu from './menu'
 import request from './request'
 import classnames from 'classnames'
-import {color} from './theme'
+import {color, colors} from './theme'
 require('./mock.js')
 
 // 连字符转驼峰
@@ -50,5 +50,6 @@ module.exports = {
   menu,
   request,
   color,
+  colors,
   classnames
 }

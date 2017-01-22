@@ -35,7 +35,6 @@ class TopGoodsTable extends Component{
   }
 
   handleYearChange(value){
-    console.log("value", value);
     this.setState({
       year: parseInt(value)
     })
@@ -74,13 +73,11 @@ class TopGoodsTable extends Component{
       function(f, index) { return index < 5}
     );
 
-    console.log('data', data);
-
-
 
     return (
       <div>
         <table style={{width:'100%'}}>
+          <tbody>
           <tr>
             <td>
               <h3 style={{marginLeft:20}}>أعلى خمسة منتجات</h3>
@@ -92,6 +89,7 @@ class TopGoodsTable extends Component{
                </Select>
             </td>
           </tr>
+        </tbody>
         </table>
 
 

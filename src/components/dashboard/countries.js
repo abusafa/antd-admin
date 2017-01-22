@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Tag } from 'antd'
 import styles from './countries.less'
 import { color } from '../../utils'
+import numeral from 'numeral';
 
 const status = {
   1: {
@@ -31,10 +32,7 @@ function Countries (props) {
       dataIndex: 'content',
       render: (text, it) => <div>
         <h5 className={styles.name}>{it.name}</h5>
-        <p className={styles.content}>{it.content}</p>
-        <div className={styles.daterow}>
-          <span className={styles.date}>{it.date}</span>
-        </div>
+        <p className={styles.content}>{numeral(it.value).format('0,0')}</p>
       </div>
     }
   ]

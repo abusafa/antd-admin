@@ -1,6 +1,7 @@
 import {color} from '../src/utils/theme'
 const Mock = require('mockjs')
 import mockStorge from '../src/utils/mockStorge'
+import {filter, sumBy,find} from 'lodash'
 
 import Outlets from './oman/outlets.json';
 import OutletsDB from './oman/db.json';
@@ -76,23 +77,28 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
   'countries':[
     {
       flag: 'sa',
-      name: 'السعودية'
+      name: 'السعودية',
+      'value|2000000-10000000': 1
     },
     {
-      flag: 'om',
-      name: 'عمان'
+      flag: 'in',
+      name: 'الهند',
+      'value|2000000-10000000': 1
     },
     {
-      flag: 'jo',
-      name: 'الأردن'
+      flag: 'my',
+      name: 'ماليزيا',
+      'value|2000000-10000000': 1
     },
     {
-      flag: 'ps',
-      name: 'فلسطين'
+      flag: 'es',
+      name: 'اسبانيا',
+      'value|2000000-10000000': 1
     },
     {
-      flag: 'kw',
-      name: 'الكويت'
+      flag: 'za',
+      name: 'جنوب إفريقيا',
+      'value|2000000-10000000': 1
     }
   ],
   'comments|5': [
@@ -120,40 +126,31 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
     }
   ],
   quote: {
-    name: 'Joho Doe',
-    title: 'Graphic Designer',
-    content: `I'm selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can't handle me at my worst, then you sure as hell don't deserve me at my best.`,
-    avatar: 'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236'
+    title: 'مؤشرات احصائية رسمية عن سلطنة عمان',
+    content: `هذه البوابة توفر مؤشرات احصائية رسمية  ذات سلاسل زمنية طويلة عن سلطنة عمان`,
   },
   numbers: [
     {
-      icon: 'pay-circle-o',
+      icon: 'up',
       color: color.green,
-      title: 'Online Review',
-      number: 2781
+      title: 'الصادرات',
+      number: sumBy(filter(OutletsDB, (o)=> o.in_out === 'out' ), (o)=> o.value)
     }, {
-      icon: 'team',
+      icon: 'down',
       color: color.blue,
-      title: 'New Customers',
-      number: 3241
+      title: 'الواردات',
+      number: sumBy(filter(OutletsDB, (o)=> o.in_out === 'in' ), (o)=> o.value)
     }, {
-      icon: 'message',
-      color: color.purple,
-      title: 'Active Projects',
-      number: 253
-    }, {
-      icon: 'shopping-cart',
+      icon: 'retweet',
       color: color.red,
-      title: 'Referrals',
-      number: 4324
+      title: 'إعادة تصدير',
+      number: 1023006123
     }
   ]
 }))
 
 module.exports = {
   'GET /api/dashboard' (req, res) {
-    console.log('global[dataKey]',global[dataKey]);
-    console.log(dataKey);
     res.json(global[dataKey])
   }
 }

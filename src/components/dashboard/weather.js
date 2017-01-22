@@ -11,8 +11,8 @@ function Weather (props) {
       <p>{name}</p>
     </div>
     <div className={styles.right}>
-      <h1 className={styles.temperature}>{temperature + '°'}</h1>
-      <p className={styles.description}>{city},{dateTime}</p>
+      <h1 className={styles.temperature}>{26 + '°'}</h1>
+      <p className={styles.description}>مسقط</p>
     </div>
   </div>
 }

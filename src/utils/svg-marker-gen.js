@@ -1,6 +1,4 @@
 import Color from 'color-js'
-console.log(Color);
-
 
 const icons = {
   star:`<g transform="translate(3.000000, 4.000000) scale(2.5)">

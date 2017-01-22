@@ -94,7 +94,7 @@ class PieChartByOutletType extends Component {
   }
 
   handleYearChange(value){
-    console.log("value", value);
+
     this.setState({
       year: parseInt(value)
     })

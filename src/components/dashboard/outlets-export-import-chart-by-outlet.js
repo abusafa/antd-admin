@@ -1,26 +1,26 @@
 import React, {Component} from 'react'
 import styles from './outlets-export-import-chart-by-outlet.less'
-import {color} from '../../utils'
-import {filter, sumBy,find} from 'lodash'
+import {color, colors} from '../../utils'
+import {filter, sumBy,find, indexOf, each} from 'lodash'
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer} from 'recharts'
 import numeral from 'numeral';
 import {Switch} from 'antd';
+
 
 class OutletsExportImportChartByOutlet extends Component {
 
   constructor(props){
     super();
     this.state={
-      inOut: 'in',
-      checked: true,
+      inOut: 'out',
+      checked: false,
     }
   }
 
   changeExportEmport(checked){
-    console.log("checked", checked);
     this.setState({
       checked: checked,
-      inOut: checked? 'out': 'in',
+      inOut: checked? 'in': 'out',
     });
 
 
@@ -29,27 +29,39 @@ class OutletsExportImportChartByOutlet extends Component {
 
 
   render(){
-    const { data, select, title } = this.props
+    const { data, title, ids, outlets } = this.props
     const {inOut, checked} = this.state
 
+      let select =
+      filter(outlets.features, (o)=> indexOf(ids,o.properties.Code)!== -1)
+      .map((item)=> {return {id:item.properties.Code, name:item.properties.NAME_AR}});
 
     let years = [2010,2011,2012,2013,2014,2015];
     let chartData = years.map((year)=>{
       let result = {
-        [select[0].name]: sumBy(filter(data, (o)=> o.outlet_id === select[0].id && o.in_out === inOut && o.year === year ), (o)=> o.value),
-        [select[1].name]: sumBy(filter(data, (o)=> o.outlet_id === select[1].id && o.in_out === inOut && o.year === year ), (o)=> o.value),
-        [select[2].name]: sumBy(filter(data, (o)=> o.outlet_id === select[2].id && o.in_out === inOut && o.year === year ), (o)=> o.value),
         year:year
       }
-      return result
+
+      each(select, (s)=> result[s.name] = sumBy(filter(data, (o)=> o.outlet_id === s.id && o.in_out === inOut && o.year === year ), (o)=> o.value))
+      return result;
     })
 
 
     return (
       <div className={styles.sales}>
-        <Switch style={{float: 'left'}} onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
+        <table style={{width:'100%'}}>
+          <tbody>
+          <tr>
+            <td>
+              <div className={styles.title}>{title}</div>
+            </td>
+            <td style={{textAlign:'left', paddingLeft:20}}>
+              <Switch onChange={(checked)=> this.changeExportEmport(checked)} defaultChecked={checked} checkedChildren='واردات' unCheckedChildren='صادرات' />
+            </td>
+          </tr>
+        </tbody>
+        </table>
 
-        <div className={styles.title}>{title}</div>
         <ResponsiveContainer minHeight={360}>
           <LineChart data={chartData}>
             <Legend verticalAlign='top'
@@ -68,10 +80,10 @@ class OutletsExportImportChartByOutlet extends Component {
                 const list = content.payload.map((item, key) => <li key={key} className={styles.tipitem}><span className={styles.radiusdot} style={{background: item.color}} />{item.name + ':' + numeral(item.value).format('0,0')}</li>)
                 return <div className={styles.tooltip}><p className={styles.tiptitle}>{content.label}</p><ul>{list}</ul></div>
               }} />
-            <Line type='monotone' dataKey={select[0].name} stroke={color.purple} strokeWidth={3} dot={{fill: color.purple}} activeDot={{r: 5, strokeWidth: 0}} />
-            <Line type='monotone' dataKey={select[1].name} stroke={color.red} strokeWidth={3} dot={{fill: color.red}} activeDot={{r: 5, strokeWidth: 0}} />
-            <Line type='monotone' dataKey={select[2].name} stroke={color.green} strokeWidth={3} dot={{fill: color.green}} activeDot={{r: 5, strokeWidth: 0}} />
-          </LineChart>
+              {select.map((item ,key)=>(
+                <Line key={item} type='monotone' dataKey={item.name} stroke={colors[key]} strokeWidth={3} dot={{fill: colors[key]}} activeDot={{r: 5, strokeWidth: 0}} />
+              ))}
+            </LineChart>
         </ResponsiveContainer>
       </div>
     )
