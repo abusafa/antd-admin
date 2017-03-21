@@ -5,7 +5,18 @@ import {filter, sumBy,find} from 'lodash'
 
 import Outlets from './oman/outlets.json';
 import OutletsDB from './oman/db.json';
+//var OutletsDB = []
 
+
+// fetch('./oman/db.json')
+//   .then(function(response) {
+//     return response.json()
+//   }).then(function(json) {
+//     console.log('parsed json', json)
+//     OutletsDB = json;
+//   }).catch(function(ex) {
+//     console.log('parsing failed', ex)
+//   })
 
 let dataKey = mockStorge('Dashboard', Mock.mock({
   'db': OutletsDB,

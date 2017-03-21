@@ -96,108 +96,124 @@ function Dashboard({location, dashboard, dispatch}) {
   const numberCards = numbers.map((item, key) => <NumberCard key={key} {...item}/>)
 
   return (
-    <Row gutter={24}>
-      <Col lg={16} md={24}>
-        <Card bordered={false} bodyStyle={{
-          padding: '24px 36px 24px 0'
-        }}>
-          <OutletsExportImportChartByOutletType data={filteredDB} title='بحسب نوع المنفذ'/>
-        </Card>
-      </Col>
-      <Col lg={8} md={24}>
-        {numberCards}
-      </Col>
+    <div>
+      <Row gutter={24}>
 
-      <Col lg={12} md={24}>
-        <Card bordered={false} {...bodyStyle}>
-          <TopGoodsTable db={filteredDB}/>
-        </Card>
-      </Col>
+        <Col lg={16} md={24}>
+          <Card bordered={false} bodyStyle={{}}>
+            <MapExample features={outlets.features} ids={outletIds}/>
+          </Card>
+        </Col>
+        <Col lg={8} md={24}>
+          <Card bordered={false} {...bodyStyle}>
+            <Countries data={countries}/>
+          </Card>
+        </Col>
 
-      <Col lg={12} md={24}>
-        <Card bordered={false} bodyStyle={{
-          padding: '24px 36px 24px 0'
-        }}>
-          <PieChartByOutletType data={filteredDB} title='بحسب المنفذ'/>
-        </Card>
+      </Row>
 
-      </Col>
+      <Row gutter={24}>
 
-      <Col lg={24} md={24}>
-        <Card bordered={false} bodyStyle={{}}>
-          <MapExample features={outlets.features} ids={outletIds}/>
-        </Card>
-      </Col>
+        <Col lg={12} md={24}>
+          <Card bordered={false} bodyStyle={{
+            padding: '24px 36px 24px 0'
+          }}>
+            <OutletsExportImportChartByOutletType data={filteredDB} title='بحسب نوع المنفذ'/>
+          </Card>
+        </Col>
+        <Col lg={12} md={24}>
 
-      <Col lg={16} md={24}>
-        <Card bordered={false} bodyStyle={{
-          padding: '24px 36px 24px 0'
-        }}>
-          <GoodsExportImportChartByGoodsType data={filteredDB} select={[
-            {
-              name: 'ورق',
-              id: 48
-            }, {
-              name: 'قطن',
-              id: 52
-            }, {
-              name: 'سجاد',
-              id: 57
-            }
-          ]} title='بحسب نوع البضاعة'/>
-        </Card>
-      </Col>
-      <Col lg={8} md={24}>
+          <Card bordered={false} {...bodyStyle}>
+            <TopGoodsTable db={filteredDB}/>
+          </Card>
+        </Col>
 
-        <Card bordered={false} {...bodyStyle}>
-          <Countries data={countries}/>
-        </Card>
-      </Col>
+      </Row>
 
-      <Col lg={18} md={24}>
+      <Row gutter={24}>
 
-        <Card bordered={false} bodyStyle={{
-          padding: '24px 36px 24px 0'
-        }}>
-          <OutletsExportImportChartByOutlet data={filteredDB} ids={outletIds} outlets={outlets} select={[
-            {
-              name: "ميناء صلالة التجاري",
-              id: 4
-            }, {
-              name: "ميناء السلطان قابوس",
-              id: 6
-            }, {
-              name: "مركز شرطة الوجاجة",
-              id: 13
-            }
-          ]} title='بحسب المنفذ'/>
-        </Card>
+        <Col lg={12} md={24}>
+          {numberCards}
+        </Col>
 
-      </Col>
-      <Col lg={6} md={24}>
-        <Row gutter={24}>
-          <Col lg={24} md={12}>
-            <Card bordered={false} className={styles.weather} bodyStyle={{
-              padding: 0,
-              height: 204,
-              background: color.blue
-            }}>
-              <Weather {...weather}/>
-            </Card>
-          </Col>
-          <Col lg={24} md={12}>
-            <Card bordered={false} className={styles.quote} bodyStyle={{
-              padding: 0,
-              height: 204,
-              background: color.peach
-            }}>
-              <Quote {...quote}/>
-            </Card>
-          </Col>
-        </Row>
-      </Col>
+        <Col lg={12} md={24}>
+          <Card bordered={false} bodyStyle={{
+            padding: '24px 36px 24px 0'
+          }}>
+            <PieChartByOutletType data={filteredDB} title='بحسب المنفذ'/>
+          </Card>
 
-    </Row>
+        </Col>
+
+      </Row>
+
+      <Row gutter={24}>
+        <Col lg={24} md={24}>
+          <Card bordered={false} bodyStyle={{
+            padding: '24px 36px 24px 0'
+          }}>
+            <GoodsExportImportChartByGoodsType data={filteredDB} select={[
+              {
+                name: 'ورق',
+                id: 48
+              }, {
+                name: 'قطن',
+                id: 52
+              }, {
+                name: 'سجاد',
+                id: 57
+              }
+            ]} title='بحسب نوع البضاعة'/>
+          </Card>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col lg={18} md={24}>
+
+          <Card bordered={false} bodyStyle={{
+            padding: '24px 36px 24px 0'
+          }}>
+            <OutletsExportImportChartByOutlet data={filteredDB} ids={outletIds} outlets={outlets} select={[
+              {
+                name: "ميناء صلالة التجاري",
+                id: 4
+              }, {
+                name: "ميناء السلطان قابوس",
+                id: 6
+              }, {
+                name: "مركز شرطة الوجاجة",
+                id: 13
+              }
+            ]} title='بحسب المنفذ'/>
+          </Card>
+
+        </Col>
+        <Col lg={6} md={24}>
+          <Row gutter={24}>
+            <Col lg={24} md={12}>
+              <Card bordered={false} className={styles.weather} bodyStyle={{
+                padding: 0,
+                height: 204,
+                background: color.blue
+              }}>
+                <Weather {...weather}/>
+              </Card>
+            </Col>
+            <Col lg={24} md={12}>
+              <Card bordered={false} className={styles.quote} bodyStyle={{
+                padding: 0,
+                height: 204,
+                background: color.peach
+              }}>
+                <Quote {...quote}/>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+
+      </Row>
+    </div>
+
   )
 }
 
