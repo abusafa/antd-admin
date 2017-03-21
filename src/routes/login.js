@@ -55,8 +55,8 @@ const login = ({
           </Button>
         </Row>
         <p>
-          <span>المستخدم: زائر</span>
-          <span>كلمة المرور: زائر</span>
+          <span>المستخدم: demo</span>
+          <span>كلمة المرور: demo</span>
         </p>
       </form>
     </div>

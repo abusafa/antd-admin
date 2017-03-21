@@ -3,8 +3,8 @@ import mockStorge from '../src/utils/mockStorge'
 
 let dataKey = mockStorge('AdminUsers', [
   {
-    username: 'زائر',
-    password: 'زائر'
+    username: 'demo',
+    password: 'demo'
   },
   {
     username: 'دانيال وو',
